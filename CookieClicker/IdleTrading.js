@@ -12,12 +12,13 @@ IdleTrading.launch = function(){
 			autoBuy: 1,
 			autoSell: 1
 		};
-		
+		let bankLevel = Game.Objects["Bank"].level;
 		for(var iG = 2; iG < Game.ObjectsN; iG++){
+			let restingValue = (iG+1)*10 + bankLevel - 1;
 			conf.goods.push({
 				active: true,
-				buyThresh: -iG,
-				sellThresh: -1,
+				buyThresh: restingValue*0.75,
+				sellThresh: restingValue,
 				minPrice: 99999,
 				maxPrice:-99999
 			});
